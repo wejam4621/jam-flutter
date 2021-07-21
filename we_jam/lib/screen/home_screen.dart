@@ -15,7 +15,7 @@ class _MyHomePageState extends State<MyHomePage> {
   var dropDownValue;
   FocusNode dropdownFocusNode = new FocusNode();
   FocusNode searchFocusNode = new FocusNode();
-  bool showDialog = false;
+  // bool showDialog = false;
 
   @override
   Widget build(BuildContext context) {
@@ -60,115 +60,167 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(top: 30),
-                          child: DropdownWidget(
-                            focusNode: dropdownFocusNode,
-                            itemsValue: [1, 2, 3],
-                            label: "All Jams which filtered",
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                  padding: EdgeInsets.symmetric(horizontal: 10),
+                                  width: MediaQuery.of(context).size.width,
+                                  decoration: BoxDecoration(
+                                    border: Border.all(width: 1)
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(vertical: 10),
+                                    child: Text("All Jams which filtered"),
+                                  )),
+                              Container(
+                                padding: EdgeInsets.symmetric(horizontal: 10),
+                                width: MediaQuery.of(context).size.width,
+                                decoration: BoxDecoration(
+                                    border: Border.all(width: 1)
+                                ),
+                                child: ListView.builder(
+                                    padding: EdgeInsets.only(top: 8, bottom: 35),
+                                    shrinkWrap: true,
+                                    itemCount: 3,
+                                    itemBuilder:
+                                        (BuildContext context, int index) {
+                                      if(index > 0) {
+                                        return Padding(
+                                          padding: const EdgeInsets.only(top: 8.0),
+                                          child: Text((index + 1).toString()),
+                                        );
+                                      }
+                                      return Text((index + 1).toString());
+                                    }),
+                              ),
+                            ],
                           ),
+                          // DropdownWidget(
+                          //   focusNode: dropdownFocusNode,
+                          //   itemsValue: [1, 2, 3],
+                          //   label: "All Jams which filtered",
+                          // ),
                         ),
                       ],
                     ),
-                    showDialog
-                        ? Container(
-                            width: MediaQuery.of(context).size.width,
-                            child: Padding(
-                              padding: const EdgeInsets.only(top: 30),
-                              child: Column(
-                                children: [
-                                  InputDecorator(
-                                    decoration: InputDecoration(
-                                        contentPadding: EdgeInsets.only(
-                                            right: 10, left: 10, top: 10),
-                                        border: OutlineInputBorder(),
-                                        labelText: "Add new Jam dialog",
-                                        labelStyle: TextStyle(
-                                            color: Colors.grey.shade800)),
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          vertical: 15, horizontal: 15),
-                                      child: Container(
-                                        width: double.infinity,
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                  top: 10),
-                                              child: Text("Jam name"),
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                  top: 10),
-                                              child: SizedBox(
-                                                height: 40,
-                                                child: TextField(
-                                                  decoration: InputDecoration(
-                                                      border:
-                                                          OutlineInputBorder()),
-                                                ),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                  top: 10),
-                                              child: Text("Jam name"),
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                  top: 10),
-                                              child: SizedBox(
-                                                height: 40,
-                                                child: TextField(
-                                                  decoration: InputDecoration(
-                                                      border:
-                                                          OutlineInputBorder()),
-                                                ),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 15  ),
-                                              child: Row(
-                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                children: [
-                                                  ElevatedButton(
-                                                      onPressed: () {
-                                                        setState(() {
-                                                          showDialog = !showDialog;
-                                                        });
-                                                      },
-                                                      child: Text("Cancel")),
-                                                  ElevatedButton(
-                                                      onPressed: () {},
-                                                      child: Text("Create")),
-                                                ],
-                                              ),
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                          )
-                        : Container()
+                    // showDialog
+                    //     ?
+
+                        // : Container()
                   ],
                 ),
               ),
             ),
           ),
         ),
-        floatingActionButton: showDialog
-            ? null
-            : FloatingActionButton(
+        floatingActionButton:
+    // showDialog
+    //         ? null
+    //         :
+    FloatingActionButton(
                 tooltip: 'Increment',
                 child: Icon(Icons.add),
                 onPressed: () {
-                  setState(() {
-                    showDialog = !showDialog;
-                  });
+                  // setState(() {
+                  //   showDialog = !showDialog;
+                  // });
+                  showDialog(context: context, builder: (BuildContext context) =>
+                     Dialog(
+                       // shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
+                       child: Padding(
+                         padding: const EdgeInsets.only(top: 8.0),
+                         child: Column(
+                           mainAxisSize: MainAxisSize.min,
+                             children: [
+                               // InputDecorator(
+                               //   decoration: InputDecoration(
+                               //       contentPadding: EdgeInsets.only(
+                               //           right: 10, left: 10, top: 10),
+                               //       border: OutlineInputBorder(),
+                               //       labelText: "Add new Jam dialog",
+                               //       labelStyle: TextStyle(
+                               //           color: Colors.grey.shade800)),
+                               //   child:
+                                 Padding(
+                                   padding: const EdgeInsets.symmetric(
+                                       vertical: 5, horizontal: 15),
+                                   child: Container(
+                                     width: double.infinity,
+                                     child: Column(
+                                       crossAxisAlignment:
+                                       CrossAxisAlignment.start,
+                                       children: [
+                                         Padding(
+                                           padding: const EdgeInsets.only(
+                                               top: 10),
+                                           child: Text("Jam name"),
+                                         ),
+                                         Padding(
+                                           padding: const EdgeInsets.only(
+                                               top: 10),
+                                           child: SizedBox(
+                                             height: 40,
+                                             child: TextField(
+                                               decoration: InputDecoration(
+                                                   border:
+                                                   OutlineInputBorder()),
+                                             ),
+                                           ),
+                                         ),
+                                         Padding(
+                                           padding: const EdgeInsets.only(
+                                               top: 10),
+                                           child: Text("Drop the beat here"),
+                                         ),
+                                         Padding(
+                                           padding: const EdgeInsets.only(
+                                               top: 10),
+                                           child: SizedBox(
+                                             height: 40,
+                                             child: TextField(
+                                               decoration: InputDecoration(
+                                                   border:
+                                                   OutlineInputBorder()),
+                                             ),
+                                           ),
+                                         ),
+                                         Padding(
+                                           padding:
+                                           const EdgeInsets.symmetric(
+                                               vertical: 15),
+                                           child:
+                                           // Row(
+                                           //   mainAxisAlignment:
+                                           //   MainAxisAlignment
+                                           //       .spaceBetween,
+                                           //   children: [
+                                               // ElevatedButton(
+                                               //     onPressed: () {
+                                               //       setState(() {
+                                               //         // showDialog =
+                                               //         //     !showDialog;
+                                               //       });
+                                               //     },
+                                               //     child: Text("Cancel")),
+                                               Center(
+                                                 child: ElevatedButton(
+                                                     onPressed: () {},
+                                                     child: Text("Create")),
+                                               ),
+                                             // ],
+                                           // ),
+                                         )
+                                       ],
+                                     ),
+                                   ),
+                                 ),
+                               // )
+                             ],
+                           ),
+                       ),
+                     )
+                  );
                 },
               ),
       ),
